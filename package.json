@@ -3,7 +3,7 @@
   "description": "Comment rating system for hubot",
   "version": "0.0.1",
   "author": "Nick Purvis <nep@noisetu.be>",
-  "license": "MIT",
+  "license": "BSD",
   "keywords": [
     "hubot",
     "hubot-scripts",
@@ -31,5 +31,10 @@
   "homepage": "https://github.com/djoser/hubot-humorate",
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script --reporter spec"
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "95e702f1afddb74f93b8e32562e477588999e3a6",
+  "directories": {
+    "test": "test"
   }
 }
