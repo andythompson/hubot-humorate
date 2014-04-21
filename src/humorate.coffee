@@ -28,6 +28,10 @@ module.exports = (robot) ->
             score = 0
 
         if count == baseCount && score <= baseCount
+            if !targetUser.score
+                targetUser.score = 0
+            if !targetUser.count
+                targetUser.count = 0
             targetUser.score += score
             targetUser.count += count
 

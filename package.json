@@ -1,7 +1,7 @@
 {
   "name": "hubot-humorate",
   "description": "Comment rating system for hubot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Nick Purvis <nep@noisetu.be>",
   "license": "BSD",
   "keywords": [
