@@ -32,14 +32,37 @@ describe('Hubot-Humorate Functionality', function() {
                 name: "mocha",
                 room: "#mocha"
             });
-            user.score = 0
-            user.count = 0
+            user.score = 0;
+            user.count = 0;
 
             // create a user
             user2 = robot.brain.userForId("2", {
                 name: "chai",
                 room: "#mocha"
             });
+            user2.score = 10;
+            user2.count = 20;
+
+            user3 = robot.brain.userForId("3", {
+                name: "latte",
+                room: "#mocha"
+            });
+            user3.score = 10;
+            user3.count = 30;
+
+            user4 = robot.brain.userForId("4", {
+                name: "espresso",
+                room: "#mocha"
+            });
+            user4.score = 10;
+            user4.count = 40;
+
+            user5 = robot.brain.userForId("5", {
+                name: "redeye",
+                room: "#mocha"
+            });
+            user5.score = 10;
+            user5.count = 50;
 
             adapter = robot.adapter;
 
@@ -51,6 +74,156 @@ describe('Hubot-Humorate Functionality', function() {
     afterEach(function() {
         robot.shutdown();
     });
+
+		describe("Gimme da best rates", function() {
+
+			// Test's best rates... very weirdly
+			it("Best rates: top 3", function(done) {
+				var expected = [
+					'Best Ratings',
+					'chai: 0.500',
+					'latte: 0.333',
+					'espresso: 0.250',
+					'redeye: 0.200',
+					'mocha: 0',
+				];
+
+				process.env.HUBOT_NUM_RATINGS = 3;
+				var totalCount = parseInt(process.env.HUBOT_NUM_RATINGS) + 1
+				count = 0;
+
+				setTimeout(function() {
+					if ( count == totalCount ) {
+						done();
+					}
+					else {
+						done( new Error("Expected " + totalCount + " responses, got " + count) );
+					}
+				}, 100);
+
+				adapter.on("send", function(envelope, strings) {
+					try {
+          	expect(strings[0]).to.equal(expected[count]);
+					}
+					catch(e) {
+						done(e);
+					}
+					count++;
+				});
+				adapter.receive(new TextMessage(user, robot.name+' best rating'))
+			});
+			// Test's best rates... very weirdly
+			//
+			it("Best rates: top 5", function(done) {
+				var expected = [
+					'Best Ratings',
+					'chai: 0.500',
+					'latte: 0.333',
+					'espresso: 0.250',
+					'redeye: 0.200',
+					'mocha: 0',
+				];
+
+				process.env.HUBOT_NUM_RATINGS = 5;
+				var totalCount = parseInt(process.env.HUBOT_NUM_RATINGS) + 1
+				count = 0;
+
+				setTimeout(function() {
+					if ( count == totalCount ) {
+						done();
+					}
+					else {
+						done( new Error("Expected " + totalCount + " responses, got " + count) );
+					}
+				}, 100);
+
+				adapter.on("send", function(envelope, strings) {
+					try {
+          	expect(strings[0]).to.equal(expected[count]);
+					}
+					catch(e) {
+						done(e);
+					}
+					count++;
+				});
+				adapter.receive(new TextMessage(user, robot.name+' best rating'))
+			});
+		});
+
+		describe("Gimme da worst rates", function() {
+
+			// Test's worst rates... very weirdly
+			it("Worst rates: bottom 3", function(done) {
+				var expected = [
+					'Worst Ratings',
+					'mocha: 0',
+					'redeye: 0.200',
+					'espresso: 0.250',
+					'latte: 0.333',
+					'chai: 0.500',
+				];
+
+				process.env.HUBOT_NUM_RATINGS = 3;
+				var totalCount = parseInt(process.env.HUBOT_NUM_RATINGS) + 1
+				count = 0;
+
+				setTimeout(function() {
+					if ( count == totalCount ) {
+						done();
+					}
+					else {
+						done( new Error("Expected " + totalCount + " responses, got " + count) );
+					}
+				}, 100);
+
+				adapter.on("send", function(envelope, strings) {
+					try {
+          	expect(strings[0]).to.equal(expected[count]);
+					}
+					catch(e) {
+						done(e);
+					}
+					count++;
+				});
+				adapter.receive(new TextMessage(user, robot.name+' Worst rating'))
+			});
+			// Test's worst rates... very weirdly
+			//
+			it("Worst rates: bottom 5", function(done) {
+				var expected = [
+					'Worst Ratings',
+					'mocha: 0',
+					'redeye: 0.200',
+					'espresso: 0.250',
+					'latte: 0.333',
+					'chai: 0.500',
+				];
+
+				process.env.HUBOT_NUM_RATINGS = 5;
+				var totalCount = parseInt(process.env.HUBOT_NUM_RATINGS) + 1
+				count = 0;
+
+				setTimeout(function() {
+					if ( count == totalCount ) {
+						done();
+					}
+					else {
+						done( new Error("Expected " + totalCount + " responses, got " + count) );
+					}
+				}, 100);
+
+				adapter.on("send", function(envelope, strings) {
+					try {
+          	expect(strings[0]).to.equal(expected[count]);
+					}
+					catch(e) {
+						done(e);
+					}
+					count++;
+				});
+				adapter.receive(new TextMessage(user, robot.name+' worst rating'))
+			});
+		});
 
     describe("Get your rate on", function() {
         it("Rate another user", function(done) {
