@@ -81,11 +81,11 @@ describe('Hubot-Humorate Functionality', function() {
         it("Best rates: top 3", function(done) {
             var expected = [
                 'Best Ratings',
-                'chai: 0.500',
-                'latte: 0.333',
-                'espresso: 0.250',
-                'redeye: 0.200',
-                'mocha: 0',
+                ' chai: 0.500',
+                ' latte: 0.333',
+                ' espresso: 0.250',
+                ' redeye: 0.200',
+                ' mocha: 0',
             ];
 
             process.env.HUBOT_NUM_RATINGS = 3;
@@ -117,11 +117,11 @@ describe('Hubot-Humorate Functionality', function() {
         it("Best rates: top 5", function(done) {
             var expected = [
                 'Best Ratings',
-                'chai: 0.500',
-                'latte: 0.333',
-                'espresso: 0.250',
-                'redeye: 0.200',
-                'mocha: 0',
+                ' chai: 0.500',
+                ' latte: 0.333',
+                ' espresso: 0.250',
+                ' redeye: 0.200',
+                ' mocha: 0',
             ];
 
             process.env.HUBOT_NUM_RATINGS = 5;
@@ -156,11 +156,11 @@ describe('Hubot-Humorate Functionality', function() {
         it("Worst rates: bottom 3", function(done) {
             var expected = [
                 'Worst Ratings',
-                'mocha: 0',
-                'redeye: 0.200',
-                'espresso: 0.250',
-                'latte: 0.333',
-                'chai: 0.500',
+                ' mocha: 0',
+                ' redeye: 0.200',
+                ' espresso: 0.250',
+                ' latte: 0.333',
+                ' chai: 0.500',
             ];
 
             process.env.HUBOT_NUM_RATINGS = 3;
@@ -192,11 +192,11 @@ describe('Hubot-Humorate Functionality', function() {
         it("Worst rates: bottom 5", function(done) {
             var expected = [
                 'Worst Ratings',
-                'mocha: 0',
-                'redeye: 0.200',
-                'espresso: 0.250',
-                'latte: 0.333',
-                'chai: 0.500',
+                ' mocha: 0',
+                ' redeye: 0.200',
+                ' espresso: 0.250',
+                ' latte: 0.333',
+                ' chai: 0.500',
             ];
 
             process.env.HUBOT_NUM_RATINGS = 5;
