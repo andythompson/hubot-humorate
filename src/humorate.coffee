@@ -19,7 +19,7 @@ module.exports = (robot) ->
     # base 10 y'all
     baseCount = 10
 
-    robot.hear /^([^:]+):\s+(\d+)\/(\d+)$/, (msg) ->
+    robot.hear /^@?([^:]+):\s+(\d+)\/(\d+)$/, (msg) ->
         score = parseInt(msg.match[2])
         count = parseInt(msg.match[3])
 
